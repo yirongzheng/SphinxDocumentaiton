@@ -78,7 +78,7 @@ Windows系统
 
 
 ----------------
-往项目中添加内容
+  往项目中添加内容
 ----------------
   1. 浏览到SphinxDocumentaion/source文件夹，并在这个文件夹下建一个新文件夹，此处建立demo文件夹作为示例。
 
@@ -99,49 +99,126 @@ Windows系统
   7. 编译成功的话，打开SphinxDocumentation文件夹中的build文件夹，里面会有刚刚发布好的静态网页index.html。
 
 
+-----------
+  修改主题
+-----------
+  1. 用vs code打开source文件夹中的conf.py文件
 
+  2. 找到主题配置行html_theme = 'alabaster' 
 
+  3. 从内置主题中挑选需要的主题，如bizstyle，并将其修改为 html_theme = 'bizstyle',然后保存。
+       官网给出了10种配置好的内置主题样式，分别是：alabaster, classic, sphinxdoc, scrolls, agogo, traditional, nature, haiku, pyramid, bizstyle。
+       另外，也可以自行配置想要的主题。
+       网址：http://www.sphinx-doc.org/en/master/theming.html#using-a-theme 
 
+  4. 打开cmd并进入到SphinxDocumentation文件夹，重新运行-build命令，则可得到新主题的样式的文档。
 
+  5. 如果喜欢readthedocs.org（也就是课程文档所使用的主题）的话，可以按照如下方式安装。
+       打开cmd，输入并运行指令 ``pip install sphinx_rtd_theme`` 
+       安装好了之后，按照上述步骤，讲conf.py中的主题配置行修改为html_theme = 'sphinx_rtd_theme'，
+       然后再重新运行sphinx-build命令发布即可。
 
-  3. 往项目中添加内容
-  
-  1. 
-  4. 修改主题
-  
-  
-  5. 安装ReadtheDoc同款主题
-  
-  
-  6. 由ReadtheDocs执行发布命令
- 
-
-
-
-当你终于历尽千辛万苦，完成了sphinx本地项目的创建与写作之后，
-是不是迫不及待想把自己写的内容发布成一个静态网页了呢？
-来跟和我一起做吧~
-
-1. 首先你需要在 **source** 文件夹中创建一个新的文件夹，并把你写的所有的rst文件都放在这个文件夹里；
-2. 打开 **source** 文件夹，找到 ``index.rst`` 文件并打开，然后在 ``toctree`` 部分，将自己写的每一个rst文件的完整路径都添加上去；
-3. 打开cmd进入到 **sphinx** 项目文件夹，然后执行 ``sphinx-build -b html source build`` 命令，等待一分钟就完成啦~
-4. 这时你可以打开 **build** 文件夹里面的 ``index.html`` 文件，你会发现你写的rst文档已经全部都发布好啦~
+  如果到这一步你都能够顺利完成，那么恭喜你，你已经可以通过sphinx来开发属于你自己的技术文档，并通过cmd发布为本地的静态网页。
+  那么如果我想把我写的文档发布到公网应该怎么办呢？
+  我如何利用sphinx来创建自己的博客并实时更新内容呢？
+  这就是这篇教程接下来要讨论的：GitHub协同与版本控制。
 
 
 =========================
 协同与版本控制。GitHub
 =========================
-  安装
 
+--------
+  安装
+--------
+  1. 官网注册：https://github.com/ 
+       首先在官网注册好一个GitHub帐号
+       第一次注册登陆，首页应该会弹出‘hello world guide’，这相当于一个快速新手指南，教你如何建立自己的repo，如何fork别人的repo等，
+       建议新手第一次登陆之后不要直接跳过这个部分，最好跟着这个指南操作一次。
+
+  2. GitHub Desktop下载：https://desktop.github.com/
+       进入上面的网址，下载并安装GitHub Desktop桌面端
+       下载好了之后打开并登陆自己的GitHub帐号
+
+-----------
+  创建repo
+-----------
+  1. 打开GitHub网页端，创建一个新repo，并命名为 SphinxDocumentation ，与本地的项目文件夹相对应；
+
+  2. 打开GitHub Desktop本地客户端，点击左上角 File-Clone repository 如下图：
+     .. images:: /images/clonerepo.jpg
+
+  3. 在弹出的新窗口中选择刚刚在GitHub网页端创建的新repo SphinxDocumentation，然后点击确定，如图：
+     .. images:: /images/clonerepo2.jpg
+  
+  4. 这时，GitHub Desktop会把网页版GitHub里我们创建的新repo clone到本地，
+
+--------
+  同步
+--------
+  1. clone完成之后，点击中央的 open this repository 可以打开本地repo对应的文件夹，如图：
+     .. images:: /images/openrepo.jpg
+
+  2. 这时，再打开之前在本地创建好的SphinxDocumentation项目文件夹，然后把整个source文件夹拷贝或移动到GitHub本地仓库的文件夹中去。
+
+  3. 此时GitHub Desktop界面会发生变化，这是因为本地仓库发生任何变化GitHub desktop都能检测到并显示在界面上，如下图：
+     .. images:: /images/committomaster.jpg 
+
+  4. 在左下角summary输入框中随意输入任意字符，此处输入1.0作为版本号来记录这次变化，然后点击 **commit to master**
+
+  5. commit完之后，界面又恢复了原来的样子，此时你对本地仓库中的文件所作的修改已经被GitHub desktop记录好了。
+      但现在只是在本地完成了修改，如何同步到GitHub网页端呢？
+      这也是为什么我们要下载GitHub Desktop的原因之一：同步与版本控制;
+      点击上方黑色栏中间的 **push origin**，将本地所作的修改push到GitHub网页端完成同步，如图：
+      .. images:: /images/push.jpg 
+  
+  6. 打开GitHub网页端，点开刚刚创建的SphinxDocumentation repo就能看到从本地push上去的所有内容啦！
+  
+--------
+  发布
+--------
+  1. 点击上方**setting**，在这个界面你还可以修改项目的名字
+      .. images:: /images/setting1.jpg
+      滚轮滚到中下方，找到**GitHub Pages**，点开下拉选项并选择**master branch**然后点击**save**保存。
+      .. images:: /images/setting2.png 
+      这时页面会自动刷新，你再下拉到**GitHub Pages**部分会发现里面多了一个url链接，这就是你生成的公网可访问的连接啦。
+      .. images:: /images/setting3.jpg 
+      点击这个链接，你就能在网页中打开你写好的技术文档。
+  2. 把这个链接分享给别人，他们也一样能在他们的电脑上打开这个链接并看到你写的技术文档。
+
+
+  截至到这一步，我们已经可以利用sphinx在本地创建技术文档并通过cmd生成本地静态网页，然后通过GitHub将我们创建的文档实现公网可访问。
+  但我们仍然没有解决之前提到的更新维护问题，我们每对文档做一次增删改之类的更新或迭代，我们都需要在本地通过cmd的-build命令编译一次，然后再push到GitHub上去，这样操作显然非常麻烦。
+  为了解决这个问题，极大提高文档的可维护性，轻松帮助我们对文档进行发布，我们就需要用到下面所说的文档托管：**Read the Docs**
+
+     
 =========================
 文档托管。Read the Docs
 =========================
-
+---------
   注册
+---------
+  1. 注册：https://readthedocs.org/
+     打开上面的网址并进行注册，填写好相关信息
+  2. 与GitHub关联。
+     注册并登陆之后，需要将readthedocs账户与GitHub账户进行关联，按照页面指示进行相关操作即可。
 
-如果用sphinx把自己的文档发布成静态网页或pdf当然都很好，但不方便的地方在于，如果我们需要对文档进行修改或是增减内容，
-那么我们每做一次修改，都需要用cmd执行一次 ``-build`` 命令，这样显然非常麻烦，
-所以我们在这里再介绍一款工具，可以轻松帮助我们对文档进行发布。
+--------------
+  创建关联项目
+--------------
+  1. 与GitHub账户关联好之后，readthedocs将能够读取到你在GitHub上的所有repo；
+  2. 点击**import a project**
+     .. images:: /images/importproject1.jpg
+  3. 在出现的窗口中选择我们要与readthedocs进行关联的repo即可，此处选择SphinxDocumentation,然后点击右边的**+**
+     .. images:: /images/importproject2.jpg
+  4. 如果是选择手动导入代码库的话，可以到GitHub网页版，打开要关联的repo，点击右方的**clone or download**，
+     然后把url复制下来，回到readthedocs网页，并把url粘贴到相对应的位置，再填好相应信息进行import即可。
+     .. images:: /images/importproject3.jpg
+  
+
+
+
+
 
 1. 进入 ``https://readthedocs.org/`` 并注册一个账号；
 2. 在自己的Github上新建一个sphinx项目repo；
