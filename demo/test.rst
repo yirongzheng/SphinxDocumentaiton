@@ -18,7 +18,8 @@ Windows系统
   1. 安装python环境。安装地址：http://www.sphinx-doc.org/en/stable/install.html
      因为sphinx是用python写的，所以如果我们想要使用sphinx来开发技术文档，我们也需要安装python环境。
      安装途径1：可以直接进入上述网址内跳转安装python，如图：
-     .. image:: /SphinxDocumentation/images/install_python1.jpg 
+..  image:: /SphinxDocumentation/images/install_python1.jpg 
+
      安装途径2：进入python官网安装，网址：https://www.python.org/
 
   2. 安装sphinx。安装地址：http://www.sphinx-doc.org/en/stable/install.html
@@ -89,7 +90,8 @@ Windows系统
        rst文件应使用rst语法进行书写，相关语法可参见：http://sphinx-doc-zh.readthedocs.io/en/latest/rest.html
 
   4. 打开source文件夹中的index.rst文件，并将demo.rst添加到目录树toctree中，如下图：
-       .. image:: demo/toctree.jpg
+..  image:: demo/toctree.jpg
+
        tips:一是要写对文件路径；二是注意对齐问题，不对齐会报错。
   
   5. 打开cmd并进入到SphinxDocumentaiton文件夹（参照前面的方法）中
@@ -146,7 +148,7 @@ Windows系统
   1. 打开GitHub网页端，创建一个新repo，并命名为 SphinxDocumentation ，与本地的项目文件夹相对应；
 
   2. 打开GitHub Desktop本地客户端，点击左上角 File-Clone repository 如下图：
-     .. images:: /images/clonerepo.jpg
+..  images:: /images/clonerepo.jpg
 
   3. 在弹出的新窗口中选择刚刚在GitHub网页端创建的新repo SphinxDocumentation，然后点击确定，如图：
      .. images:: /images/clonerepo2.jpg
